@@ -1,0 +1,28 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: redis-replica-autoscaler
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: redis-replica
+  minReplicas: 1
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 10
+  
+---
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: node-server-autoscaler
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: node-server
+  minReplicas: 3
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 10
+

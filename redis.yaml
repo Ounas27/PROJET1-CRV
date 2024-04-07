@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-main
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+      role: main
+  template:
+    metadata:
+      labels:
+        app: redis
+        role: main
+    spec:
+      containers:
+      - name: redis
+        image: redis:7.2
+        ports:
+        - containerPort: 6379
+        resources:
+          requests:
+            cpu: "100m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-main
+spec:
+  selector:
+    app: redis
+    role: main
+  ports:
+    - protocol: TCP
+      port: 6379
+      targetPort: 6379
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-replica
+spec:
+  selector:
+    matchLabels:
+      app: redis
+      role: replica
+  template:
+    metadata:
+      labels:
+        app: redis
+        role: replica
+    spec:
+      containers:
+      - name: redis
+        image: redis:7.2
+        command: ["redis-server", "--slaveof", "redis-main", "6379"]
+        resources:
+          requests:
+            cpu: "100m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-replica
+spec:
+  selector:
+    app: redis
+    role: replica
+  ports:
+    - protocol: TCP
+      port: 6379
+      targetPort: 6379
