@@ -15,9 +15,9 @@ Identifiants pour accéder à Grafana :
 L'URL pour accéder au site Web est disponible en HTTP et HTTPS. Il est IMPORTANT de choisir le lien HTTP pour un fonctionnement correct !
 Note : Au démarrage, le tableau de bord Grafana affiche plusieurs graphiques, mais les données /metrics sont vides. Veuillez effectuez quelques requêtes sur le site pour les afficher.
 
-Déploiement Manuel
+En cas de problème avec le script, veuillez suivre les étapes décrites dans le déploiement manuel :
 
-En cas de problème avec le script, suivez ces étapes pour déployer l'infrastructure manuellement :
+Déploiement Manuel
 
     kubectl apply -f redis.yaml
     kubectl apply -f nodeJS.yaml
