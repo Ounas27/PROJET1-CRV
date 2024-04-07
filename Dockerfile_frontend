@@ -1,0 +1,11 @@
+FROM node:18
+
+RUN npm install -g tunnelmole
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["yarn", "start"]
+
+

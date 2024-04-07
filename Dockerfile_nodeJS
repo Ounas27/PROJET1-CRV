@@ -1,0 +1,15 @@
+# Utiliser une image officielle de Node.js comme base
+FROM node:18
+
+# Copier le reste des fichiers du projet dans le conteneur
+COPY . .
+
+# Installer les dépendances
+RUN npm install --force
+
+# Exposer le port utilisé par l'application Node.js
+EXPOSE 3000
+
+# Commande pour démarrer l'application
+CMD ["node", "main.js"]
+
