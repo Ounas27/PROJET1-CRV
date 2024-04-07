@@ -9,7 +9,9 @@ Déploiement Automatique à l'aide d'un script BASH
     ./script.sh
 
 Le script va lancer automatiquement le service grafana avec un tableau de bord pré-configuré.
+
 Identifiants pour accéder à Grafana :
+
     Nom d'utilisateur : admin
     Mot de passe : admin
 L'URL pour accéder au site Web est disponible en HTTP et HTTPS. Il est IMPORTANT de choisir le lien HTTP pour un fonctionnement correct !
