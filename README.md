@@ -25,15 +25,15 @@ En cas de problème avec le script, suivez ces étapes pour déployer manuelleme
 
 bash
 
-kubectl apply -f redis.yaml
-kubectl apply -f nodeJS.yaml
-kubectl apply -f frontend.yaml
-kubectl apply -f prometheus.yaml
-kubectl apply -f grafana.yaml
-kubectl apply -f autoScaling.yaml
-minikube addons enable metrics-server
-minikube tunnel
-kubectl get svc
+    kubectl apply -f redis.yaml
+    kubectl apply -f nodeJS.yaml
+    kubectl apply -f frontend.yaml
+    kubectl apply -f prometheus.yaml
+    kubectl apply -f grafana.yaml
+    kubectl apply -f autoScaling.yaml
+    minikube addons enable metrics-server
+    minikube tunnel
+    kubectl get svc
 
     Copiez l'adresse IP du service node-server-loadbalancer.
     Accédez au pod du frontend avec la commande kubectl exec -it nomDuPod -- /bin/bash, puis éditez le fichier src/conf.js avec l'URL suivante : http://adresseIP_serveurJS:3000, où adresseIP_serveur est l'adresse IP récupérée précédemment.
