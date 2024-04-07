@@ -2,7 +2,7 @@ Prérequis
 
     Cluster Minikube actif
 
-Déploiement Automatique à l'aide d'un script
+Déploiement Automatique à l'aide d'un script BASH
 
     Exécutez le script bash script.sh :
 
@@ -18,6 +18,7 @@ Note : Au démarrage, le tableau de bord Grafana affiche plusieurs graphiques, m
 Déploiement Manuel
 
 En cas de problème avec le script, suivez ces étapes pour déployer l'infrastructure manuellement :
+
     kubectl apply -f redis.yaml
     kubectl apply -f nodeJS.yaml
     kubectl apply -f frontend.yaml
