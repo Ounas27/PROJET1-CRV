@@ -37,3 +37,5 @@ Déploiement Manuel
     Accédez au pod du frontend avec la commande kubectl exec -it nomDuPod -- /bin/bash, puis éditez le fichier src/conf.js avec l'URL suivante : http://adresseIP_serveurJS:3000, où adresseIP_serveur est l'adresse IP récupérée précédemment.
     À l'intérieur du pod frontend, exécutez tmole 3000 pour créer le tunnel HTTP.
     Dans un autre terminal, lancez Grafana avec minikube service grafana.
+---
+Les Dockerfiles utilisés afin de créé les images du serveur nodeJS et du Frontend sont également présent dans le repository mais il est normalement inutile de les utiliser pour déployer l'infrastructure
