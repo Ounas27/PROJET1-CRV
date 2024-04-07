@@ -2,12 +2,15 @@ Prérequis
 
     Cluster Minikube actif
 
-Déploiement Automatique à l'aide d'un script
+Déploiement Automatique
 
-    Lancez le script bash script.sh : ./script.sh
+    Exécutez le script bash script.sh :
 
+bash
 
-    Le script configure automatiquement le service Grafana avec un tableau de bord pré-configuré.
+./script.sh
+
+    Le script configurer automatiquement le service Grafana avec un tableau de bord pré-configuré.
     Identifiants pour accéder à Grafana :
         Nom d'utilisateur : admin
         Mot de passe : admin
@@ -17,6 +20,8 @@ Déploiement Automatique à l'aide d'un script
 Déploiement Manuel
 
 En cas de problème avec le script, suivez ces étapes pour déployer manuellement :
+
+    Appliquez les fichiers de configuration YAML :
 
 bash
 
