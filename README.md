@@ -5,9 +5,6 @@ Prérequis
 Déploiement Automatique
 
     Lancez le script bash script.sh :
-
-bash
-
 ./script.sh
 
     Le script configure automatiquement le service Grafana avec un tableau de bord pré-configuré.
