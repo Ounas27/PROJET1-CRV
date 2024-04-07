@@ -1,23 +1,39 @@
-PREREQUIS -
--- Cluster Minikube actif
+Prérequis
 
-1 - Pour deployer l'application web sur un cluster minikube, il suffit de lancer le script BASH script.sh ---> ./script.sh
-|__ Le script va lancer automatiquement le service grafana avec un tableau de bord pré-configuré. Les identifiants pour accéder à celui-ci sont : username = admin ; password = admin
-|__ L'URL permettant d'acceder au site Web est proposé sous deux versions HTTP ET HTTPS : Il est IMPORTANT de choisir le lien HTTP pour que tout fonctionne correctement !!!
-|__ NB : A son lancement, le tableau de bord Grafana propose plusieurs graphs mais les données /metrics étant encore vide, il faut réaliser quelques requêtes sur le site pour que ceci s’affichent
+    Cluster Minikube actif
 
- 2 - Dans le cas où le script ne fonctionnerait pas vous pouvez suivre la procédure suivante afin de tout déployer manuellement
- |__ kubectl apply -f redis.yaml
- |__ kubectl apply -f nodeJS.yaml
- |__ kubectl apply -f frontend.yaml
- |__ kubectl apply -f prometheus.yaml
- |__ kubectl apply -f grafana.yaml
- |__ kubectl apply -f autoScaling.yaml
- |__ minikube addons enable metrics-server
- |__ minikube tunnel
- |__ kubectl get svc (copier dans un coin l’adresse IP du service node-server-loadbalancer) 
- |__ Rentrer dans le pod du frontend (avec la commande kubectl exec -it nomDuPod -- /bin/bash) puis dans le fichier src/conf.js ecrire l’URL suivante : http://adresseIP_serveurJS:3000 avec adresseIP_serveur = l’adresse IP récupérée à l’étape précédente
- |__ Toujours à l’intérieur du pod frontend, entrer la commande suivante pour créer le tunnel http : tmole 3000 (Il faut choisir le lien HTTP)
- |__ Dans un autre terminal, pour lancer grafana : minikube service grafana
+Déploiement Automatique
 
+    Lancez le script bash script.sh :
 
+bash
+
+./script.sh
+
+    Le script configure automatiquement le service Grafana avec un tableau de bord pré-configuré.
+    Identifiants pour accéder à Grafana :
+        Nom d'utilisateur : admin
+        Mot de passe : admin
+    L'URL pour accéder au site Web est disponible en HTTP et HTTPS. Il est IMPORTANT de choisir le lien HTTP pour un fonctionnement correct.
+    Note : Au démarrage, le tableau de bord Grafana affiche plusieurs graphiques, mais les données /metrics sont vides. Effectuez quelques requêtes sur le site pour les afficher.
+
+Déploiement Manuel
+
+En cas de problème avec le script, suivez ces étapes pour déployer manuellement :
+
+bash
+
+kubectl apply -f redis.yaml
+kubectl apply -f nodeJS.yaml
+kubectl apply -f frontend.yaml
+kubectl apply -f prometheus.yaml
+kubectl apply -f grafana.yaml
+kubectl apply -f autoScaling.yaml
+minikube addons enable metrics-server
+minikube tunnel
+kubectl get svc
+
+    Copiez l'adresse IP du service node-server-loadbalancer.
+    Accédez au pod du frontend avec la commande kubectl exec -it nomDuPod -- /bin/bash, puis éditez le fichier src/conf.js avec l'URL suivante : http://adresseIP_serveurJS:3000, où adresseIP_serveur est l'adresse IP récupérée précédemment.
+    À l'intérieur du pod frontend, exécutez tmole 3000 pour créer le tunnel HTTP.
+    Dans un autre terminal, lancez Grafana avec minikube service grafana.
